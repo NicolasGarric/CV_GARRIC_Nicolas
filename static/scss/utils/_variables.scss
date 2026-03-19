@@ -1,0 +1,63 @@
+// static/scss/utils/_variables.scss
+// ══════════════════════════════════════════════════════
+//  Modifiez ici pour personnaliser tout le CV
+// ══════════════════════════════════════════════════════
+
+// ─── Couleurs ─────────────────────────────────────────
+$accent:          #5e9e8e;
+$accent-dark:     #3d7a6c;
+$accent-light:    #e8f4f1;
+
+$text-dark:       #1a1a1a;
+$text-mid:        #444444;
+$text-light:      #777777;
+
+$border:          #e2e2e0;
+$white:           #ffffff;
+$sidebar-bg:      #f7f7f5;
+$body-bg:         #d4d4d4;
+
+// ─── Icônes d'expérience ──────────────────────────────
+$icon-web-bg:     #e8f0fe;
+$icon-web-fg:     #4285f4;
+$icon-train-bg:   #fce8e6;
+$icon-train-fg:   #d93025;
+$icon-film-bg:    #fef7e0;
+$icon-film-fg:    #f4a323;
+$icon-post-bg:    #fef7e0;
+$icon-post-fg:    #f4a323;
+$icon-drone-bg:   #e8f4f1;
+$icon-drone-fg:   #5e9e8e;
+
+// ─── Typographie ──────────────────────────────────────
+$font-display:    'Playfair Display', Georgia, serif;
+$font-body:       'Inter', 'Segoe UI', sans-serif;
+
+$size-name:       32px;
+$size-subtitle:   12px;
+$size-label:      8.5px;
+$size-job-title:  13px;
+$size-body:       10px;
+$size-small:      9px;
+
+// Espacements réduits
+$pad-outer:       26px;
+$pad-inner:       16px;
+$section-gap:     12px;
+
+// ─── Layout A4 (794px × 1123px @ 96dpi) ──────────────
+$page-w:          794px;
+$page-h:          1123px;
+$col-main:        476px;
+$col-side:        320px;
+$pad-outer:       34px;
+$pad-inner:       22px;
+$section-gap:     18px;
+
+// ─── Composants ───────────────────────────────────────
+$photo-size:      86px;
+$bar-w:           9px;
+$bar-h:           16px;
+$icon-size:       18px;
+$radius-icon:     4px;
+$radius-tag:      3px;

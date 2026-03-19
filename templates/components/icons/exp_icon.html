@@ -1,0 +1,28 @@
+{# templates/components/icons/exp_icon.html #}
+
+{% if icon_kind == "web" %}
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2
+                0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+    </svg>
+
+{% elif icon_kind == "train" %}
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12
+                3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99
+                l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+    </svg>
+
+{% elif icon_kind == "film" or icon_kind == "post" %}
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1
+                0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9
+                2-2V4h-4z"/>
+    </svg>
+
+{% elif icon_kind == "drone" %}
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 7l-7-4-7 4v10l7 4 7-4V7zm-9 11.5L6 15.5V9l6-3.5
+                6 3.5v6.5l-6 3.5z"/>
+    </svg>
+{% endif %}

@@ -1,0 +1,26 @@
+// static/scss/utils/_colors.scss
+@use 'variables' as v;
+
+// Réexposition des couleurs pour import dans les composants
+$accent:       v.$accent;
+$accent-dark:  v.$accent-dark;
+$accent-light: v.$accent-light;
+$text-dark:    v.$text-dark;
+$text-mid:     v.$text-mid;
+$text-light:   v.$text-light;
+$border:       v.$border;
+$white:        v.$white;
+$sidebar:      v.$sidebar-bg;
+$body-bg:      v.$body-bg;
+
+// Icônes
+$icon-web-bg:   v.$icon-web-bg;
+$icon-web-fg:   v.$icon-web-fg;
+$icon-train-bg: v.$icon-train-bg;
+$icon-train-fg: v.$icon-train-fg;
+$icon-film-bg:  v.$icon-film-bg;
+$icon-film-fg:  v.$icon-film-fg;
+$icon-post-bg:  v.$icon-post-bg;
+$icon-post-fg:  v.$icon-post-fg;
+$icon-drone-bg: v.$icon-drone-bg;
+$icon-drone-fg: v.$icon-drone-fg;

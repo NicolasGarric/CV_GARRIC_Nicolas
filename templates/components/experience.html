@@ -1,0 +1,64 @@
+{# templates/components/experience.html #}
+{# Reçoit la variable `exp` depuis la boucle dans pages/cv.html #}
+
+<div class="cv__experience__item">
+
+    <div class="cv__experience__item__header">
+
+        <div class="cv__experience__item__icon
+                    cv__experience__item__icon--{{ exp.icon_kind }}">
+        {% set icon_kind = exp.icon_kind %}
+        {% include "components/icons/exp_icon.html" %}
+        </div>
+
+        <div class="cv__experience__item__header__content">
+        <h3 class="cv__experience__item__title">{{ exp.title }}</h3>
+
+        <div class="cv__experience__item__meta">
+            <span class="cv__experience__item__meta__company">
+            {{ exp.company }}
+            </span>
+            {% if exp.contract %}
+            <span class="cv__experience__item__meta__contract">
+                — {{ exp.contract }}
+            </span>
+            {% endif %}
+            <span class="cv__experience__item__meta__dates">{{ exp.dates }}</span>
+            <span class="cv__experience__item__meta__location">{{ exp.location }}</span>
+        </div>
+        </div>
+
+    </div>{# /.cv__experience__item__header #}
+
+    {% if exp.description %}
+        <p class="cv__experience__item__desc">{{ exp.description }}</p>
+    {% endif %}
+
+    {% if exp.bullets %}
+        <ul class="cv__experience__item__bullets">
+        {% for bullet in exp.bullets %}
+            <li class="cv__experience__item__bullets__item">{{ bullet }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if exp.projects %}
+    <div class="cv__experience__item__projects">
+        <span class="cv__experience__item__projects__label">Projets :</span>
+        <ul class="cv__experience__item__projects__list">
+        {% for project in exp.projects %}
+            <li class="cv__experience__item__projects__list__item">
+            {% if project.href %}
+                <a class="cv__experience__item__projects__list__item__link"
+                href="{{ project.href }}"
+                target="_blank">{{ project.label }}</a>
+            {% else %}
+                {{ project.label }}
+            {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>{# /.cv__experience__item #}

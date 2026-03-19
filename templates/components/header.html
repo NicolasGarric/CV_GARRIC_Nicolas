@@ -1,0 +1,48 @@
+{# templates/components/header.html #}
+
+<header class="cv__header">
+
+    <div class="cv__header__left">
+
+        <h1 class="cv__header__name">{{ cv.header.name }}</h1>
+        <p class="cv__header__title">{{ cv.header.title }}</p>
+
+        <div class="cv__header__contacts">
+        {% for contact in cv.header.contacts %}
+            <div class="cv__header__contact cv__header__contact--{{ contact.kind }}">
+
+            {% include "components/icons/contact_icon.html" %}
+
+            {% if contact.href %}
+                <a class="cv__header__contact__link"
+                href="{{ contact.href }}"
+                target="_blank">{{ contact.label }}</a>
+            {% else %}
+                <span class="cv__header__contact__text">{{ contact.label }}</span>
+            {% endif %}
+
+            </div>
+        {% endfor %}
+        </div>
+
+    </div>{# /.cv__header__left #}
+
+    <div class="cv__header__photo">
+        {% if cv.header.photo %}
+        <img
+            class="cv__header__photo__img"
+            src="/static/{{ cv.header.photo }}"
+            alt="{{ cv.header.name }}"
+        />
+        {% else %}
+        <div class="cv__header__photo__placeholder">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4
+                    7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6
+                    1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+        </div>
+        {% endif %}
+    </div>{# /.cv__header__photo #}
+
+</header>

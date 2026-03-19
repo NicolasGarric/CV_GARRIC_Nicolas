@@ -1,0 +1,110 @@
+// static/scss/pages/_cv.scss
+@use '../utils/variables' as v;
+@use '../utils/colors'    as c;
+@use '../utils/mixins'    as m;
+
+body {
+    font-family:     v.$font-body;
+    font-size:       v.$size-body;
+    color:           c.$text-dark;
+    background:      c.$body-bg;
+    display:         flex;
+    justify-content: center;
+    align-items:     flex-start;
+    min-height:      100vh;
+    padding:         32px 0 48px;
+}
+
+.cv {
+    width:      v.$page-w;
+    min-height: v.$page-h;
+    background: c.$white;
+    display:    flex;
+    flex-direction: column;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, .18);
+    overflow:   hidden;
+
+    &__body {
+        display: flex;
+        flex:    1;
+    }
+
+    &__main {
+        width:          v.$col-main;
+        padding:        v.$pad-inner v.$pad-inner v.$pad-inner v.$pad-outer;
+        border-right:   1.5px solid c.$border;
+        display:        flex;
+        flex-direction: column;
+        gap:            v.$section-gap;
+    }
+
+    &__resume {
+        &__label { @include m.section-label; }
+
+        &__text {
+            @include m.body;
+            color:       c.$text-mid;
+            line-height: 1.65;
+
+            strong {
+                color:       c.$text-dark;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__education {
+        &__label { @include m.section-label; }
+
+        &__list {
+            display:        flex;
+            flex-direction: column;
+            gap:            10px;
+        }
+
+        &__item {
+            &__degree {
+                @include m.body;
+                font-weight: 700;
+                color:       c.$text-dark;
+                line-height: 1.25;
+            }
+
+            &__school {
+                @include m.small;
+                font-weight: 600;
+                color:       c.$accent-dark;
+                margin-top:  1px;
+            }
+
+            &__dates {
+                @include m.small;
+                color:      c.$text-light;
+                margin-top: 1px;
+            }
+        }
+    }
+}
+
+@media print {
+    @page {
+        size:   A4 portrait;
+        margin: 0;
+    }
+
+    html, body {
+        width:      210mm;
+        height:     297mm;
+        background: #fff;
+        padding:    0;
+        margin:     0;
+    }
+
+    .cv {
+        width:      210mm;
+        min-height: 297mm;
+        box-shadow: none;
+        margin:     0;
+        padding:    0;
+    }
+}

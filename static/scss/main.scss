@@ -1,0 +1,16 @@
+// static/scss/main.scss
+// Point d'entrée — compilé par : sass static/scss/main.scss static/css/main.css
+
+// 1. Utils — pas de CSS généré, uniquement variables/mixins
+@use 'utils/reset';
+@use 'utils/variables' as v;
+@use 'utils/colors'    as c;
+@use 'utils/mixins'    as m;
+
+// 2. Composants
+@use 'components/header';
+@use 'components/experience';
+@use 'components/sidebar';
+
+// 3. Page
+@use 'pages/cv';

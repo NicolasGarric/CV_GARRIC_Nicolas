@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+{# templates/pages/cv.html #}
+
+{% block content %}
+
+<div class="cv">
+
+    {# ═══════════════════════════════════════
+        HEADER — nom, titre, contacts, photo
+        Composant : templates/components/header.html
+        ═══════════════════════════════════════ #}
+    {% include "components/header.html" %}
+
+    {# ═══════════════════════════════════════
+        BODY — 2 colonnes
+        ═══════════════════════════════════════ #}
+    <div class="cv__body">
+
+        {# ─── Colonne principale gauche ─── #}
+        <main class="cv__main">
+
+        {# Résumé #}
+        <section class="cv__resume">
+            <h2 class="cv__resume__label">Résumé</h2>
+            <p class="cv__resume__text">{{ cv.resume | safe }}</p>
+        </section>
+
+        {# Expériences — boucle sur cv.experiences #}
+        <section class="cv__experience">
+            <h2 class="cv__experience__label">Expérience</h2>
+            <div class="cv__experience__list">
+            {% for exp in cv.experiences %}
+                {% include "components/experience.html" %}
+                {% if not loop.last %}
+                <hr class="cv__experience__divider" />
+                {% endif %}
+            {% endfor %}
+            </div>
+        </section>
+
+        {# Éducation — boucle sur cv.education #}
+        <section class="cv__education">
+            <h2 class="cv__education__label">Éducation</h2>
+            <div class="cv__education__list">
+            {% for edu in cv.education %}
+                {% include "components/education.html" %}
+            {% endfor %}
+            </div>
+        </section>
+
+        </main>
+
+        {# ─── Sidebar droite ─── #}
+        <aside class="cv__sidebar">
+        {% include "components/sidebar.html" %}
+        </aside>
+
+    </div>{# /.cv__body #}
+
+</div>{# /.cv #}
+
+{% endblock %}

@@ -1,6 +1,20 @@
 [package]
-name = "nicolas-garric-cv"
+name    = "nicolas-garric-cv"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[[bin]]
+name = "cv"
+path = "src/main.rs"
 
 [dependencies]
+actix-web        = "4"
+actix-files      = "0.6"
+tera             = "1"
+serde            = { version = "1", features = ["derive"] }
+serde_json       = "1"
+env_logger       = "0.11"
+log              = "0.4"
+chromiumoxide    = { version = "0.7", features = ["tokio-runtime"] }
+futures          = "0.3"
+tokio = "1.50.0"

@@ -1,0 +1,94 @@
+// static/scss/components/_header.scss
+@use '../utils/variables' as v;
+@use '../utils/colors'    as c;
+@use '../utils/mixins'    as m;
+
+.cv__header {
+    display:         flex;
+    align-items:     flex-start;
+    justify-content: space-between;
+    padding:         v.$pad-outer v.$pad-outer 18px v.$pad-outer;
+    border-bottom:   1.5px solid c.$border;
+
+    &__left {
+        flex:          1;
+        padding-right: 20px;
+    }
+
+    &__name {
+        font-family:    v.$font-display;
+        font-size:      v.$size-name;
+        font-weight:    700;
+        color:          c.$text-dark;
+        line-height:    1.1;
+        letter-spacing: -.5px;
+    }
+
+    &__title {
+        font-size:   v.$size-subtitle;
+        font-weight: 400;
+        color:       c.$text-mid;
+        margin-top:  5px;
+    }
+
+    &__contacts {
+        display:    flex;
+        flex-wrap:  wrap;
+        gap:        2px 18px;
+        margin-top: 10px;
+    }
+
+    &__contact {
+        display:     flex;
+        align-items: center;
+        gap:         5px;
+
+        &__icon {
+            width:       11px;
+            height:      11px;
+            fill:        c.$accent;
+            flex-shrink: 0;
+        }
+
+        &__link {
+            @include m.small;
+            color:           c.$text-mid;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+        }
+
+        &__text {
+            @include m.small;
+            color: c.$text-mid;
+        }
+    }
+
+    &__photo {
+        flex-shrink: 0;
+
+        &__img {
+            width:         v.$photo-size;
+            height:        v.$photo-size;
+            border-radius: 50%;
+            object-fit:    cover;
+            border:        2.5px solid c.$accent;
+        }
+
+        &__placeholder {
+            width:           v.$photo-size;
+            height:          v.$photo-size;
+            border-radius:   50%;
+            background:      c.$accent-light;
+            border:          2.5px solid c.$accent;
+            display:         flex;
+            align-items:     center;
+            justify-content: center;
+
+            svg {
+                width:  44px;
+                height: 44px;
+                fill:   c.$accent;
+            }
+        }
+    }
+}

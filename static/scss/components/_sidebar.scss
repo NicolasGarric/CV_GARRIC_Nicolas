@@ -1,0 +1,160 @@
+// static/scss/components/_sidebar.scss
+@use '../utils/variables' as v;
+@use '../utils/colors'    as c;
+@use '../utils/mixins'    as m;
+
+.cv__sidebar {
+    width:          v.$col-side;
+    background:     c.$sidebar;
+    padding:        v.$pad-inner v.$pad-outer v.$pad-inner v.$pad-inner;
+    display:        flex;
+    flex-direction: column;
+    gap:            v.$section-gap;
+
+    &__skills {
+        &__label { @include m.section-label; }
+
+        &__group {
+            margin-bottom: 10px;
+
+            &__title {
+                @include m.body;
+                font-weight:   600;
+                color:         c.$text-mid;
+                margin-bottom: 4px;
+            }
+
+            &__tags {
+                display:   flex;
+                flex-wrap: wrap;
+                gap:       3px 6px;
+
+                &__item {
+                    @include m.small;
+                    color:         c.$text-dark;
+                    background:    c.$white;
+                    border:        1px solid c.$border;
+                    border-radius: v.$radius-tag;
+                    padding:       2px 7px;
+                    font-weight:   500;
+                }
+            }
+        }
+
+        &__soft {
+            display:   flex;
+            flex-wrap: wrap;
+            gap:       3px 10px;
+
+            &__item {
+                @include m.small;
+                font-weight: 500;
+                color:       c.$text-mid;
+            }
+        }
+    }
+
+    &__languages {
+        &__label { @include m.section-label; }
+
+        &__list {
+            display:        flex;
+            flex-direction: column;
+            gap:            8px;
+        }
+
+        &__item {
+            display:     flex;
+            align-items: center;
+            gap:         8px;
+
+            &__name {
+                @include m.small;
+                font-weight: 500;
+                color:       c.$text-dark;
+                width:       60px;      // largeur fixe au lieu de min-width
+            }
+
+            &__bars {
+                display: flex;
+                gap:     3px;
+                flex:    1;             // prend l'espace restant
+                justify-content: flex-start;
+
+                &__bar {
+                    width:         v.$bar-w;
+                    height:        v.$bar-h;
+                    border-radius: 2px;
+                    background:    #d8d8d6;
+
+                    &--filled { background: c.$accent; }
+                }
+            }
+
+            &__level {
+                @include m.small;
+                color:      c.$text-light;
+                width:      28px;       // largeur fixe
+                text-align: right;
+            }
+        }
+    }
+
+    &__certifications {
+        &__label { @include m.section-label; }
+
+        &__list {
+            display:        flex;
+            flex-direction: column;
+            gap:            8px;
+        }
+
+        &__item {
+            &__name {
+                @include m.small;
+                font-weight: 600;
+                color:       c.$text-dark;
+                line-height: 1.35;
+            }
+
+            &__issuer {
+                @include m.small;
+                color:      c.$text-light;
+                margin-top: 1px;
+            }
+        }
+    }
+
+    &__hobbies {
+        &__label { @include m.section-label; }
+
+        &__list {
+            display:        flex;
+            flex-direction: column;
+            gap:            6px;
+        }
+
+        &__item {
+            &__name {
+                @include m.small;
+                font-weight: 600;
+                color:       c.$text-dark;
+            }
+
+            &__detail {
+                @include m.small;
+                color:      c.$text-light;
+                margin-top: 1px;
+            }
+
+            &__link {
+                @include m.small;
+                color:      c.$accent-dark;
+                display:    block;
+                margin-top: 1px;
+
+                &:hover { text-decoration: underline; }
+            }
+        }
+    }
+}

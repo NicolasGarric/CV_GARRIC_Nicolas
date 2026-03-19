@@ -1,0 +1,136 @@
+// static/scss/components/_experience.scss
+@use '../utils/variables' as v;
+@use '../utils/colors'    as c;
+@use '../utils/mixins'    as m;
+
+.cv__experience {
+
+    &__label   { @include m.section-label; }
+
+    &__list {
+        display:        flex;
+        flex-direction: column;
+        gap:            14px;
+    }
+
+    &__divider {
+        border:      none;
+        border-top:  1px solid c.$border;
+        margin-left: 25px;
+    }
+
+    &__item {
+
+        &__header {
+            display:     flex;
+            align-items: flex-start;
+            gap:         7px;
+        }
+
+        &__icon {
+            width:           v.$icon-size;
+            height:          v.$icon-size;
+            border-radius:   v.$radius-icon;
+            display:         flex;
+            align-items:     center;
+            justify-content: center;
+            flex-shrink:     0;
+            margin-top:      1px;
+
+            svg { width: 11px; height: 11px; }
+
+            &--web   { @include m.icon-box(c.$icon-web-bg,   c.$icon-web-fg);   }
+            &--train { @include m.icon-box(c.$icon-train-bg, c.$icon-train-fg); }
+            &--film  { @include m.icon-box(c.$icon-film-bg,  c.$icon-film-fg);  }
+            &--post  { @include m.icon-box(c.$icon-post-bg,  c.$icon-post-fg);  }
+            &--drone { @include m.icon-box(c.$icon-drone-bg, c.$icon-drone-fg); }
+        }
+
+        &__header__content { flex: 1; }
+
+        &__title {
+            font-size:   v.$size-job-title;
+            font-weight: 700;
+            color:       c.$text-dark;
+            line-height: 1.2;
+        }
+
+        &__meta {
+            display:    flex;
+            flex-wrap:  wrap;
+            gap:        0 10px;
+            margin-top: 2px;
+
+            &__company  { @include m.small; font-weight: 600; color: c.$text-mid;   }
+            &__contract { @include m.small; color: c.$text-mid;   }
+            &__dates    { @include m.small; color: c.$text-light; }
+            &__location { @include m.small; color: c.$text-light; }
+        }
+
+        &__desc {
+            @include m.small;
+            color:      c.$text-mid;
+            margin-top: 4px;
+        }
+
+        &__bullets {
+            display:        flex;
+            flex-direction: column;
+            gap:            2px;
+            margin-top:     4px;
+
+            &__item {
+                @include m.small;
+                color:        c.$text-mid;
+                padding-left: 12px;
+                position:     relative;
+
+                &::before {
+                    content:     '•';
+                    position:    absolute;
+                    left:        0;
+                    color:       c.$accent;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &__projects {
+            margin-top: 5px;
+
+            &__label {
+                @include m.small;
+                font-weight: 600;
+                color:       c.$text-dark;
+            }
+
+            &__list {
+                display:               grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap:                   1px 8px;
+                margin-top:            2px;
+
+                &__item {
+                    @include m.small;
+                    color:        c.$text-mid;
+                    padding-left: 12px;
+                    position:     relative;
+                    line-height:  1.4;
+
+                    &::before {
+                        content:  '•';
+                        position: absolute;
+                        left:     0;
+                        color:    c.$accent;
+                    }
+
+                    &__link {
+                        color:           inherit;
+                        text-decoration: none;
+                        &:hover { text-decoration: underline; }
+                    }
+                }
+            }
+        }
+    }
+}

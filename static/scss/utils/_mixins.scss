@@ -1,0 +1,40 @@
+// static/scss/utils/_mixins.scss
+@use 'variables' as v;
+
+// ─── Typographie ──────────────────────────────────────
+
+@mixin body {
+    font-family: v.$font-body;
+    font-size:   v.$size-body;
+    line-height: 1.55;
+}
+
+@mixin small {
+    font-family: v.$font-body;
+    font-size:   v.$size-small;
+    line-height: 1.45;
+}
+
+@mixin label {
+    font-size:      v.$size-label;
+    font-weight:    600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+// ─── Label de section (vert + bordure basse) ──────────
+// Utilisé sur tous les titres de section du CV
+@mixin section-label {
+    @include label;
+    color:         v.$accent;
+    padding-bottom: 4px;
+    margin-bottom:  8px;
+    border-bottom:  1px solid v.$accent-light;
+}
+
+// ─── Boîte icône colorée ──────────────────────────────
+// $bg = couleur de fond, $fg = couleur de l'icône SVG
+@mixin icon-box($bg, $fg) {
+    background: $bg;
+    svg { fill: $fg; }
+}

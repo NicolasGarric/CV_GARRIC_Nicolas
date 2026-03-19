@@ -1,0 +1,90 @@
+{# templates/components/sidebar.html #}
+
+{# ─── Compétences ─── #}
+<section class="cv__sidebar__skills">
+    <h2 class="cv__sidebar__skills__label">Compétences</h2>
+
+    <div class="cv__sidebar__skills__group">
+        <h3 class="cv__sidebar__skills__group__title">Front End</h3>
+        <div class="cv__sidebar__skills__group__tags">
+        {% for tag in cv.skills.frontend %}
+            <span class="cv__sidebar__skills__group__tags__item">{{ tag }}</span>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="cv__sidebar__skills__group">
+        <h3 class="cv__sidebar__skills__group__title">Back End</h3>
+        <div class="cv__sidebar__skills__group__tags">
+        {% for tag in cv.skills.backend %}
+            <span class="cv__sidebar__skills__group__tags__item">{{ tag }}</span>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="cv__sidebar__skills__group">
+        <h3 class="cv__sidebar__skills__group__title">Soft Skills</h3>
+        <div class="cv__sidebar__skills__soft">
+        {% for skill in cv.skills.soft_skills %}
+            <span class="cv__sidebar__skills__soft__item">{{ skill }}</span>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ─── Langues ─── #}
+<section class="cv__sidebar__languages">
+    <h2 class="cv__sidebar__languages__label">Langues</h2>
+    <div class="cv__sidebar__languages__list">
+        {% for lang in cv.languages %}
+        <div class="cv__sidebar__languages__item">
+            <span class="cv__sidebar__languages__item__name">{{ lang.name }}</span>
+            <div class="cv__sidebar__languages__item__bars">
+            {% for i in range(end=5) %}
+                {% if i < lang.bars %}
+                <div class="cv__sidebar__languages__item__bars__bar
+                            cv__sidebar__languages__item__bars__bar--filled">
+                </div>
+                {% else %}
+                <div class="cv__sidebar__languages__item__bars__bar"></div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <span class="cv__sidebar__languages__item__level">{{ lang.level }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# ─── Certifications ─── #}
+<section class="cv__sidebar__certifications">
+    <h2 class="cv__sidebar__certifications__label">Certifications</h2>
+    <div class="cv__sidebar__certifications__list">
+        {% for cert in cv.certifications %}
+        <div class="cv__sidebar__certifications__item">
+            <p class="cv__sidebar__certifications__item__name">{{ cert.name }}</p>
+            <p class="cv__sidebar__certifications__item__issuer">{{ cert.issuer }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# ─── Loisirs ─── #}
+<section class="cv__sidebar__hobbies">
+    <h2 class="cv__sidebar__hobbies__label">Loisirs</h2>
+    <div class="cv__sidebar__hobbies__list">
+        {% for hobby in cv.hobbies %}
+        <div class="cv__sidebar__hobbies__item">
+            <p class="cv__sidebar__hobbies__item__name">{{ hobby.name }}</p>
+            {% if hobby.detail %}
+            <p class="cv__sidebar__hobbies__item__detail">{{ hobby.detail }}</p>
+            {% endif %}
+            {% for link in hobby.links %}
+            <a class="cv__sidebar__hobbies__item__link"
+                href="{{ link.href }}"
+                target="_blank">{{ link.label }}</a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
