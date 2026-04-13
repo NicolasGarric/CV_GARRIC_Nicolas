@@ -22,6 +22,28 @@ pub async fn render(
         .body(html))
 }
 
+// Handler pour le CV japonais — /ja
+pub async fn render_ja(
+    tera:    web::Data<Tera>,
+    cv_data: web::Data<crate::data::cv::CvData>,
+) -> Result<HttpResponse> {
+    let ja_data = crate::data::cv_ja::load();
+
+    let mut ctx = Context::new();
+    ctx.insert("cv", &ja_data);
+
+    let html = tera
+        .render("pages/cv.html", &ctx)
+        .map_err(|e| {
+            eprintln!("❌  Erreur rendu template JA : {}", e);
+            actix_web::error::ErrorInternalServerError("Template error")
+        })?;
+
+    Ok(HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(html))
+}
+
 // Handler pour le CV anglais — /en
 pub async fn render_en(
     tera:    web::Data<Tera>,

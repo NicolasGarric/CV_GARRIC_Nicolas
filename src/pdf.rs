@@ -121,6 +121,71 @@ fn base64_encode(input: &str) -> String {
     result
 }
 
+// Export PDF version japonaise
+pub async fn export_ja(
+    tera:    web::Data<tera::Tera>,
+    cv_data: web::Data<crate::data::cv::CvData>,
+) -> Result<HttpResponse> {
+    let ja_data = crate::data::cv_ja::load();
+
+    let mut ctx = tera::Context::new();
+    ctx.insert("cv", &ja_data);
+
+    let html = tera
+        .render("pages/cv.html", &ctx)
+        .map_err(|e| {
+            eprintln!("❌  Erreur rendu template JA : {}", e);
+            actix_web::error::ErrorInternalServerError("Template error")
+        })?;
+
+    let config = BrowserConfig::builder()
+        .chrome_executable("/usr/bin/chromium-browser")
+        .no_sandbox()
+        .build()
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Browser config error"))?;
+
+    let (mut browser, mut handler) = Browser::launch(config)
+        .await
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Browser launch error"))?;
+
+    let handler_task = tokio::spawn(async move {
+        while let Some(_) = handler.next().await {}
+    });
+
+    let page = browser
+        .new_page("about:blank")
+        .await
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Page error"))?;
+
+    let encoded = base64_encode(&html);
+    page.goto(format!("data:text/html;base64,{}", encoded))
+        .await
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Navigation error"))?;
+
+    page.wait_for_navigation()
+        .await
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Navigation wait error"))?;
+
+    let pdf_bytes = page
+        .pdf(chromiumoxide::cdp::browser_protocol::page::PrintToPdfParams {
+            print_background: Some(true),
+            ..Default::default()
+        })
+        .await
+        .map_err(|_| actix_web::error::ErrorInternalServerError("PDF generation error"))?;
+
+    browser.close().await.ok();
+    handler_task.abort();
+
+    Ok(HttpResponse::Ok()
+        .content_type("application/pdf")
+        .append_header((
+            "Content-Disposition",
+            "attachment; filename=\"nicolas-garric-cv-ja.pdf\"",
+        ))
+        .body(pdf_bytes))
+}
+
 // Export PDF version anglaise
 pub async fn export_en(
     tera:    web::Data<tera::Tera>,

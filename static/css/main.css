@@ -492,6 +492,29 @@ body {
   flex-direction: column;
   gap: 18px;
 }
+.cv__current-projects__label {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5e9e8e;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e8f4f1;
+}
+.cv__current-projects__text {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 10px;
+  line-height: 1.65;
+  color: #444444;
+}
+.cv__current-projects__link {
+  color: #5e9e8e;
+  text-decoration: none;
+}
+.cv__current-projects__link:hover {
+  text-decoration: underline;
+}
 .cv__resume__label {
   font-size: 8.5px;
   font-weight: 600;

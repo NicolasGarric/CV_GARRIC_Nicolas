@@ -25,6 +25,23 @@
             <p class="cv__resume__text">{{ cv.resume | safe }}</p>
         </section>
 
+        {# Projets en cours #}
+        {% if cv.current_projects %}
+        <section class="cv__current-projects">
+            <h2 class="cv__current-projects__label">{{ cv.current_projects_label }}</h2>
+            {% for project in cv.current_projects %}
+            <p class="cv__current-projects__text">
+                {{ project.description }}
+                {% if project.href %}
+                <br><a class="cv__current-projects__link"
+                       href="{{ project.href }}"
+                       target="_blank">{{ project.label }}</a>
+                {% endif %}
+            </p>
+            {% endfor %}
+        </section>
+        {% endif %}
+
         {# Expériences — boucle sur cv.experiences #}
         <section class="cv__experience">
             <h2 class="cv__experience__label">Expérience</h2>

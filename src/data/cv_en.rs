@@ -1,20 +1,22 @@
 // src/data/cv_en.rs
 use crate::data::cv::{
-    Certification, Contact, ContactKind, CvData, Education,
+    Certification, Contact, ContactKind, CurrentProject, CvData, Education,
     Experience, Header, HobbyLink, IconKind, Language, Project, Skills,
     Hobby,
 };
 
 pub fn load() -> CvData {
     CvData {
-        header:         header(),
-        resume:         resume(),
-        experiences:    experiences(),
-        education:      education(),
-        skills:         skills(),
-        languages:      languages(),
-        certifications: certifications(),
-        hobbies:        hobbies(),
+        header:                 header(),
+        resume:                 resume(),
+        current_projects_label: "Ongoing Projects".into(),
+        current_projects:       current_projects(),
+        experiences:            experiences(),
+        education:              education(),
+        skills:                 skills(),
+        languages:              languages(),
+        certifications:         certifications(),
+        hobbies:                hobbies(),
     }
 }
 
@@ -34,16 +36,37 @@ fn header() -> Header {
 }
 
 fn resume() -> String {
-    "Full Stack Developer trained at <strong>Le Wagon Paris</strong> and Castor&Pollux, \
-     with an atypical background combining <strong>web development</strong> and \
-     <strong>international film production</strong> (Cannes Film Festival, Japan–France co-productions). \
-     Autonomous, rigorous, and experienced in high-pressure environments with strict deadlines. \
-     Available as <strong>freelance (French company)</strong> or on a <strong>permanent contract</strong>. \
-     Currently based in France, then <strong>in Tokyo from September 2026</strong> for 4 years.".into()
+    "Full Stack Developer with a background combining <strong>web development</strong> and \
+     <strong>international film production</strong>. \
+     Available <strong>freelance</strong> or on a <strong>permanent contract</strong> — \
+     <strong>Tokyo from September 2026</strong>.".into()
+}
+
+fn current_projects() -> Vec<CurrentProject> {
+    vec![
+        CurrentProject {
+            label:       "portfolio-nicolas-garric.vercel.app/upcoming".into(),
+            href:        Some("https://portfolio-nicolas-garric.vercel.app/upcoming".into()),
+            description: "All my ongoing projects are available on my portfolio:".into(),
+        },
+    ]
 }
 
 fn experiences() -> Vec<Experience> {
     vec![
+        Experience {
+            title:       "Personal Portfolio".into(),
+            company:     "Personal Project".into(),
+            contract:    None,
+            dates:       "04/2026".into(),
+            location:    "Paris, France".into(),
+            description: Some("Personal portfolio featuring completed projects, upcoming projects, browser-playable games and email contact.".into()),
+            bullets: vec![
+                "React/TypeScript, Supabase backend, games in Rust/WebAssembly, deployed on Vercel with FR/EN/JP internationalisation".into(),
+            ],
+            projects: vec![],
+            icon_kind: IconKind::Web,
+        },
         Experience {
             title:       "Full Stack Developer — WordPress".into(),
             company:     "Castor & Pollux".into(),
@@ -129,8 +152,8 @@ fn education() -> Vec<Education> {
 
 fn skills() -> Skills {
     Skills {
-        frontend:    vec!["HTML5".into(), "Twig".into(), "CSS3".into(), "SCSS".into(), "JS ES6+".into(), "Figma".into(), "Bootstrap".into(), "React".into(), "Angular".into()],
-        backend:     vec!["Ruby".into(), "Ruby on Rails".into(), "Java".into(), "PHP".into(), "Rust".into(), "AI".into(), "GitLab / GitHub".into(), "PostgreSQL".into(), "Testing".into(), "REST API".into(), "DB Architecture".into()],
+        frontend:    vec!["HTML5".into(), "CSS3".into(), "SCSS".into(), "JS ES6+".into(), "TypeScript".into(), "React".into(), "Twig".into(), "WordPress".into(), "Figma".into(), "Bootstrap".into()],
+        backend:     vec!["Ruby on Rails".into(), "PHP".into(), "Rust".into(), "WebAssembly".into(), "Supabase".into(), "PostgreSQL".into(), "GitLab / GitHub".into(), "Vercel".into(), "REST API".into(), "Testing".into(), "DB Architecture".into()],
         soft_skills: vec!["Problem Solving".into(), "Adaptability".into(), "Communication".into(), "Organisation".into(), "Continuous Learning".into(), "Teamwork".into(), "Collaboration".into()],
     }
 }

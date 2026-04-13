@@ -49,7 +49,11 @@ mod routes {
         cfg.route("/export-pdf", web::get().to(pdf::export));
 
         // CV Anglais
-        cfg.route("/en",           web::get().to(pages::cv::render_en));
+        cfg.route("/en",            web::get().to(pages::cv::render_en));
         cfg.route("/en/export-pdf", web::get().to(pdf::export_en));
+
+        // CV Japonais
+        cfg.route("/ja",            web::get().to(pages::cv::render_ja));
+        cfg.route("/ja/export-pdf", web::get().to(pdf::export_ja));
     }
 }

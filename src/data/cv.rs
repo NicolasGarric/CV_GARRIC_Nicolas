@@ -6,28 +6,39 @@ use serde::{Deserialize, Serialize};
 // ══════════════════════════════════════════════════════
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CurrentProject {
+    pub label:       String,
+    pub href:        Option<String>,
+    pub description: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CvData {
-    pub header:         Header,
-    pub resume:         String,
-    pub experiences:    Vec<Experience>,
-    pub education:      Vec<Education>,
-    pub skills:         Skills,
-    pub languages:      Vec<Language>,
-    pub certifications: Vec<Certification>,
-    pub hobbies:        Vec<Hobby>,
+    pub header:                   Header,
+    pub resume:                   String,
+    pub current_projects_label:   String,
+    pub current_projects:         Vec<CurrentProject>,
+    pub experiences:              Vec<Experience>,
+    pub education:                Vec<Education>,
+    pub skills:                   Skills,
+    pub languages:                Vec<Language>,
+    pub certifications:           Vec<Certification>,
+    pub hobbies:                  Vec<Hobby>,
 }
 
 impl CvData {
     pub fn load() -> Self {
         Self {
-            header:         Header::default(),
-            resume:         resume(),
-            experiences:    experiences(),
-            education:      education(),
-            skills:         Skills::default(),
-            languages:      languages(),
-            certifications: certifications(),
-            hobbies:        hobbies(),
+            header:                 Header::default(),
+            resume:                 resume(),
+            current_projects_label: "Projets en cours".into(),
+            current_projects:       current_projects(),
+            experiences:            experiences(),
+            education:              education(),
+            skills:                 Skills::default(),
+            languages:              languages(),
+            certifications:         certifications(),
+            hobbies:                hobbies(),
         }
     }
 }
@@ -108,8 +119,8 @@ pub struct Skills {
 impl Default for Skills {
     fn default() -> Self {
         Self {
-            frontend:    vec!["HTML5".into(), "Twig".into(), "CSS3".into(), "SCSS".into(), "JS ES6+".into(), "Figma".into(), "Bootstrap".into(), "React".into(), "Angular".into()],
-            backend:     vec!["Ruby".into(), "Ruby on Rails".into(), "Java".into(), "PHP".into(), "Rust".into(), "IA".into(), "GitLab / GitHub".into(), "PostgreSQL".into(), "Testing".into(), "API REST".into(), "Architecture BDD".into()],
+            frontend:    vec!["HTML5".into(), "CSS3".into(), "SCSS".into(), "JS ES6+".into(), "TypeScript".into(), "React".into(), "Twig".into(), "WordPress".into(), "Figma".into(), "Bootstrap".into()],
+            backend:     vec!["Ruby on Rails".into(), "PHP".into(), "Rust".into(), "WebAssembly".into(), "Supabase".into(), "PostgreSQL".into(), "GitLab / GitHub".into(), "Vercel".into(), "API REST".into(), "Testing".into(), "Architecture BDD".into()],
             soft_skills: vec!["Résolution de problèmes".into(), "Adaptabilité".into(), "Communication".into(), "Organisation".into(), "Apprentissage Continu".into(), "Travail en Équipe".into(), "Collaboration".into()],
         }
     }
@@ -146,15 +157,37 @@ pub struct HobbyLink {
 // ══════════════════════════════════════════════════════
 
 fn resume() -> String {
-    "Développeur Full Stack formé chez <strong>Le Wagon Paris</strong> et Castor&Pollux, avec un parcours atypique \
-     alliant <strong>développement web</strong> et <strong>production cinématographique internationale</strong>. \
-     Autonome, rigoureux, habitué aux environnements exigeants et aux deadlines strictes. \
-     Disponible en <strong>freelance (société française)</strong> ou en <strong>CDI</strong>. \
-     Actuellement en France, puis <strong>à Tokyo à partir de septembre 2026</strong> pour 4 ans.".into()
+    "Développeur Full Stack avec un parcours alliant <strong>développement web</strong> et \
+     <strong>production cinématographique internationale</strong>. \
+     Disponible en <strong>freelance</strong> ou en <strong>CDI</strong> — \
+     <strong>à Tokyo dès septembre 2026</strong>.".into()
+}
+
+fn current_projects() -> Vec<CurrentProject> {
+    vec![
+        CurrentProject {
+            label:       "portfolio-nicolas-garric.vercel.app/upcoming".into(),
+            href:        Some("https://portfolio-nicolas-garric.vercel.app/upcoming".into()),
+            description: "Tous mes projets en cours sont disponibles sur mon site portfolio :".into(),
+        },
+    ]
 }
 
 fn experiences() -> Vec<Experience> {
     vec![
+        Experience {
+            title:       "Portfolio personnel".into(),
+            company:     "Projet personnel".into(),
+            contract:    None,
+            dates:       "04/2026".into(),
+            location:    "Paris, France".into(),
+            description: Some("Portfolio personnel avec sites réalisés, projets à venir, jeux jouables dans le navigateur et contact mail.".into()),
+            bullets: vec![
+                "React/TypeScript, backend Supabase, jeux en Rust/WebAssembly, déployé sur Vercel avec internationalisation FR/EN/JP".into(),
+            ],
+            projects: vec![],
+            icon_kind: IconKind::Web,
+        },
         Experience {
             title:       "Développeur Full Stack — WordPress".into(),
             company:     "Castor & Pollux".into(),
