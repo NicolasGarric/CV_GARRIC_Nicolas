@@ -56,6 +56,16 @@
     </div>
 </section>
 
+{# ─── Éducation ─── #}
+<section class="cv__education">
+    <h2 class="cv__education__label">Éducation</h2>
+    <div class="cv__education__list">
+        {% for edu in cv.education %}
+            {% include "components/education.html" %}
+        {% endfor %}
+    </div>
+</section>
+
 {# ─── Certifications ─── #}
 <section class="cv__sidebar__certifications">
     <h2 class="cv__sidebar__certifications__label">Certifications</h2>

@@ -553,11 +553,10 @@ body {
 }
 .cv__education__item__degree {
   font-family: "Inter", "Segoe UI", sans-serif;
-  font-size: 10px;
-  line-height: 1.55;
+  font-size: 9px;
+  line-height: 1.25;
   font-weight: 700;
   color: #1a1a1a;
-  line-height: 1.25;
 }
 .cv__education__item__school {
   font-family: "Inter", "Segoe UI", sans-serif;

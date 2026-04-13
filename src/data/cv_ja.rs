@@ -1,7 +1,7 @@
 // src/data/cv_ja.rs
 use crate::data::cv::{
     Certification, Contact, ContactKind, CurrentProject, CvData, Education,
-    Experience, Header, HobbyLink, IconKind, Language, Project, Skills,
+    Experience, Header, IconKind, Language, Project, Skills,
     Hobby,
 };
 
@@ -182,13 +182,6 @@ fn hobbies() -> Vec<Hobby> {
         Hobby { name: "アウトドアスポーツ".into(), detail: Some("クライミング・ハイキング".into()),                                            links: vec![] },
         Hobby { name: "グルメ".into(),        detail: Some("日本料理・発酵食品".into()),                                                        links: vec![] },
         Hobby { name: "日本語学習".into(),    detail: Some("2026年1月より積極的に学習中 — ひらがな、カタカナ、日常語彙".into()),               links: vec![] },
-        Hobby {
-            name:   "ゲーム開発".into(),
-            detail: Some("GDScript (Godot) · Rust — 進行中のプロジェクト".into()),
-            links:  vec![
-                HobbyLink { label: "godot-survivor".into(),      href: "https://github.com/NicolasGarric/godot-survivor".into() },
-                HobbyLink { label: "godot-knight-jumper".into(), href: "https://github.com/NicolasGarric/godot-knight-jumper".into() },
-            ],
-        },
+        Hobby { name: "ゲーム開発".into(), detail: Some("GDScript (Godot) · Rust".into()), links: vec![] },
     ]
 }

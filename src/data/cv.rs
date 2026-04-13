@@ -299,6 +299,6 @@ fn hobbies() -> Vec<Hobby> {
         Hobby { name: "Sports de plein air".into(),   detail: Some("Escalade · Randonnée".into()),             links: vec![] },
         Hobby { name: "Gastronomie".into(),           detail: None,                                             links: vec![] },
         Hobby { name: "Apprentissage du japonais".into(), detail: Some("Hiragana & Katakana · Préparation JLPT N5".into()), links: vec![] },
-        Hobby { name: "Développement de jeux vidéos".into(), detail: Some("GDScript, Rust".into()),                       links: vec![] },
+        Hobby { name: "Développement de jeux vidéos".into(), detail: Some("GDScript (Godot) · Rust".into()), links: vec![] },
     ]
 }
